@@ -13,7 +13,7 @@ h1 {
   width: 50%;
   text-transform: uppercase;
   font-family: arial;
-  text-shadow: -1px 0 #e212a4, 0 1px #e212a4, 1px 0 #e212a4, 0 -1px #e212a4;
+  text-shadow: -2px 0 #e212a4, 0 2px #e212a4, 2px 0 #e212a4, 0 -2px #e212a4;
   color: #5a6bc4;
   font-size: 100px;
 }
@@ -22,6 +22,8 @@ nav a {
   font-size: 14pt;
   font-family: monospace;
   color: #c4e810;
+  border-right: 1px white solid;
+  border-left: 1px white solid;
 }
 
 nav a:hover {
@@ -38,6 +40,8 @@ nav a:active {
 
 nav {
   background-color: #111;
+  border-bottom: 2px white solid;
+  margin-bottom: 50px;
 }
 
 img {
@@ -50,11 +54,11 @@ img:hover {
 }
 
 #whack {
-  position: absolute;
+  position: fixed;
   background-color: blue;
   color: red;
   text-shadow: 2px 0 yellow, -2px 0 yellow, 0 2px yellow, 0 -2px yellow;
-  transform: rotate(90deg);
+  transform: rotate(180deg);
 }
 
 p.copyright {
