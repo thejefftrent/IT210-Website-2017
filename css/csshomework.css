@@ -19,7 +19,7 @@ h1 {
 }
 
 nav a {
-  font-size: 14pt;#e212a4
+  font-size: 14pt;
   font-family: monospace;
   color: #c4e810;
 }
@@ -55,4 +55,11 @@ img:hover {
   color: red;
   text-shadow: 2px 0 yellow, -2px 0 yellow, 0 2px yellow, 0 -2px yellow;
   transform: rotate(90deg);
+}
+
+p.copyright {
+  color: #333;
+  text-decoration: underline;
+  font-style: italic;
+  font-size: 10pt;
 }
