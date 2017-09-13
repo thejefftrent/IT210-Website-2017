@@ -1,0 +1,58 @@
+/*!
+  * Made by Jeff Trent September 2017 for IT 210 Homework
+  * Did I say it would be good? It should at least fulfill the homework requirements ;)
+*/
+
+header {
+  width: 100%;
+}
+
+h1 {
+  position: relative;
+  margin: auto;
+  width: 50%;
+  text-transform: uppercase;
+  font-family: arial;
+  text-shadow: -1px 0 #e212a4, 0 1px #e212a4, 1px 0 #e212a4, 0 -1px #e212a4;
+  color: #5a6bc4;
+  font-size: 100px;
+}
+
+nav a {
+  font-size: 14pt;#e212a4
+  font-family: monospace;
+  color: #c4e810;
+}
+
+nav a:hover {
+  color: #c5ea1e;
+}
+
+nav a:visited {
+  color: #af0554;
+}
+
+nav a:active {
+  color: #0fdb20
+}
+
+nav {
+  background-color: #111;
+}
+
+img {
+  transition: all 1s ease-in-out;
+  -webkit-transition: all 1s ease-in-out;
+}
+
+img:hover {
+  transform: scale(1.25);
+}
+
+#whack {
+  position: absolute;
+  background-color: blue;
+  color: red;
+  text-shadow: 2px 0 yellow, -2px 0 yellow, 0 2px yellow, 0 -2px yellow;
+  transform: rotate(90deg);
+}
