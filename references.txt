@@ -4,3 +4,7 @@ https://www.w3schools.com/tags/default.asp
 https://www.w3schools.com/howto/howto_js_sidenav.asp
 
 https://v4-alpha.getbootstrap.com/components/navbar/
+
+https://stackoverflow.com/questions/1027354/need-an-unordered-list-without-any-bullets
+
+https://www.favicon-generator.org/
