@@ -1,0 +1,6 @@
+csszengarden.com/174/ - for general style
+https://www.w3schools.com/tags/default.asp
+
+https://www.w3schools.com/howto/howto_js_sidenav.asp
+
+https://v4-alpha.getbootstrap.com/components/navbar/

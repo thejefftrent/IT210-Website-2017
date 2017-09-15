@@ -1,0 +1,38 @@
+/*
+  * Custom CSS for this class! By Jeff Trent
+  * I'm not greedy. Still my crappy code!
+  * Design inspired by author of csszengarden.com/174/
+*/
+
+.mainheader {
+
+}
+
+.navbar {
+  float: right;
+}
+
+.header-image {
+  width: 200px;
+  height: 200px;
+}
+
+#thefinetext {
+  font-size: 10pt;
+  font-family: sans-serif;
+  text-align: center;
+  text-decoration: underline;
+  font-style: italic;
+  color:
+}
+
+#thetitle {
+  background-color: @brand-success;
+}
+
+#subtitletext {
+  font-size: 14pt;
+  font-family: cursive;
+  text-align: center;
+  font-style: italic;
+}
