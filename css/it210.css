@@ -48,7 +48,7 @@ header {
 }
 
 #thetitle {
-  font-family: sans-serif;
+  font-family: 'Press Start 2P', cursive;
   color: #054754;
 }
 
@@ -77,8 +77,4 @@ header {
 .content-image {
   width: 400px;
   height: inherit;
-}
-
-.it-nav {
-  background-color: #4f4d4a;
 }
