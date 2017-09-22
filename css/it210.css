@@ -1,0 +1,84 @@
+/*
+  * Custom CSS for this class! By Jeff Trent
+  * I'm not greedy. Still my crappy code!
+  * Design inspired by author of csszengarden.com/174/
+*/
+
+/*
+  * Swatch:
+  * #c47e1b -golden orange
+  * #79e0e5
+*/
+
+body {
+  background-image: url(css/bg.png);
+  background-color: #eee;
+
+}
+
+header {
+  border-radius: 10px;
+  margin: 3px;
+  padding: 7px;
+}
+
+.mainheader {
+  background-color: #e8a647;
+}
+
+.subheader {
+    background-color: #4f4d4a;
+}
+
+.navbar {
+  float: right;
+}
+
+.header-image {
+  width: 200px;
+  height: 200px;
+}
+
+#thefinetext {
+  font-size: 10pt;
+  font-family: sans-serif;
+  text-align: center;
+  font-style: italic;
+  color: #c47e1b;
+}
+
+#thetitle {
+  font-family: sans-serif;
+  color: #054754;
+}
+
+#subtitletext {
+  font-size: 14pt;
+  font-family: cursive;
+  text-align: center;
+  font-style: italic;
+  color: #c47e1b;
+}
+
+.content-box {
+  background-color: #e8a647;
+  color: #054754;
+  margin: 3px;
+  padding: 7px;
+  border-radius: 10px;
+}
+
+.content-heading {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: serif;
+}
+
+.content-image {
+  width: 400px;
+  height: inherit;
+}
+
+.it-nav {
+  background-color: #4f4d4a;
+}
