@@ -32,7 +32,7 @@ function commitNewEndorsement() {
 
     endorsements.push({"name":document.getElementById("nameField").value
                               , "comment":document.getElementById("commentField").value
-                              , "date":new Date().toLocaleString(), "timestamp":Date.now()});
+                              , "date":document.getElementById("timeField").value, "timestamp":Date.now()});
   localStorage.endorsements = JSON.stringify(endorsements);
 
 
@@ -46,11 +46,12 @@ function commitNewEndorsement() {
   localStorage.name = "";
   document.getElementById("commentField").value = "";
   document.getElementById("nameField").value = "";
+  document.getElementById("timeField").value = getEzTime();
 
 }
 
 function sortByKey(key) {
-  endorsements = endorsements.sort(function(a,b){
+  endorsements.sort(function(a,b){
 
     var x = a[key];
 
@@ -58,6 +59,22 @@ function sortByKey(key) {
 
     return ((x<y) ?-1:((x>y)?1:0));
 });
+}
+
+function getEzTime() {
+  var date = new Date();
+  var yyyy = date.getFullYear();
+  var dd = date.getDate();
+  if(dd < 10)
+  {
+    dd = "" + "0" + dd;
+  }
+  var mm = date.getMonth() + 1;
+  if(mm < 10)
+  {
+    mm = "" + "0" + mm;
+  }
+  return  ("" + yyyy + "-" + mm + "-" + dd);
 }
 
 function endorOnload() {
@@ -73,4 +90,6 @@ function endorOnload() {
   {
     document.getElementById("AllEndor").innerHTML = "<p>Looks like no one has endorsed me yet... Why not be the first?</p>";
   }
+
+  document.getElementById("timeField").value = getEzTime();
 }
