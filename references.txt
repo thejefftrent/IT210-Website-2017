@@ -37,3 +37,7 @@ https://www.w3schools.com/jsref/jsref_obj_date.asp
 https://www.w3schools.com/js/js_json_objects.asp
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
 https://www.w3schools.com/TAgs/tag_hr.asp
+
+
+
+https://davidwalsh.name/query-string-javascript

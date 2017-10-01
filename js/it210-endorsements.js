@@ -90,6 +90,38 @@ function endorOnload() {
   {
     document.getElementById("AllEndor").innerHTML = "<p>Looks like no one has endorsed me yet... Why not be the first?</p>";
   }
-
-  document.getElementById("timeField").value = getEzTime();
 }
+function ajaxWriteEndorsements() {
+  $.ajax({
+    url:"js/endorsement.json",
+    success: function(ejson){
+      endorsements = ejson;
+    }
+  });
+  localStorage.endorsements = JSON.stringify(endorsements);
+  //delete old contents
+  $("#AllEndor").empty();
+  //update json
+  for(var i = 0; i < endorsements.length; i++)
+  {
+    $("#AllEndor").html(function(j, oldHTML){
+      return oldHTML + "<h4>" + endorsements[i].name + " at <i>" + endorsements[i].date + "</i></h4>" +  "<p>" + endorsements[i].comment + "</p> <hr>"
+    });
+  }
+}
+
+
+//On document load
+$(document).ready(function(){
+  localJSONCheck();
+  $("#timeField").val(getEzTime());
+  ajaxWriteEndorsements();
+});
+
+
+//load JSON
+$(document).ready(function(){
+  setInterval(function() {
+    ajaxWriteEndorsements();
+  }, 5000);
+});

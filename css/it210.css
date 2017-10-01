@@ -11,7 +11,7 @@
 */
 
 body {
-  background-image: url(css/bg.png);
+  background-image: url(bg.png);
   background-color: #eee;
 
 }
@@ -76,5 +76,6 @@ header {
 
 .content-image {
   width: 400px;
+  
   height: inherit;
 }
