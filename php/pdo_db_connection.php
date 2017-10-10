@@ -2,7 +2,7 @@
 $dbms = 'mysql';
 $host = 'localhost';
 $db   = 'webforms';
-$user = 'root';
-$pass = 'root';
+$pass = 'password';
+$user = 'limiteduse';
 $pdo  = new PDO($dbms . ":host=" . $host . ";dbname=" . $db . ";charset=utf8", $user, $pass);
 ?>
