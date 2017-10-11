@@ -9,10 +9,10 @@ $page = strtok(strtok($_SERVER["REQUEST_URI"],'.'),'/');
       <a href="php/logout.php" class="nav-link">Logout</a>
     </li>
     <li class="nav-item">
-      <a href="home.php" class=" nav-link"><span class="glyphicon glyphicon-home"></span> Home</a>
+      <a href="home.php" class="<?php if($page == 'home'){echo 'active';} ?> nav-link"><span class="glyphicon glyphicon-home"></span> Home</a>
     </li>
     <li class="nav-item">
-      <a href="#" class=" nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="true"><span class="glyphicon glyphicon-ice-lolly-tasted"></span> My projects <span class="glyphicon glyphicon-menu-down"></span></a>
+      <a href="#" class="<?php if($page == 'project'){echo 'active';} ?> nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="true"><span class="glyphicon glyphicon-ice-lolly-tasted"></span> My projects <span class="glyphicon glyphicon-menu-down"></span></a>
       <ul class="dropdown-menu">
         <li>
           <a href="project.php?project=0" class="nav-link"><span class="glyphicon glyphicon-king"></span> Project 1</a>
@@ -26,10 +26,10 @@ $page = strtok(strtok($_SERVER["REQUEST_URI"],'.'),'/');
       </ul>
     </li>
     <li class="nav-item">
-      <a href="endorsements.php" class=" nav-link"><span class="glyphicon glyphicon-gift"></span> Endorsements from others</a>
+      <a href="endorsements.php" class="<?php if($page == 'endorsements'){echo 'active';} ?> nav-link"><span class="glyphicon glyphicon-gift"></span> Endorsements from others</a>
     </li>
     <li class="nav-item">
-      <a href="contact.php" class=" nav-link"><span class="glyphicon glyphicon-envelope"></span> Contact me</a>
+      <a href="contact.php" class="<?php if($page == 'contact'){echo 'active';} ?> nav-link"><span class="glyphicon glyphicon-envelope"></span> Contact me</a>
     </li>
   </ul>
 </nav>
