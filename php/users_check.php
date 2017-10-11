@@ -8,4 +8,6 @@ if ($mysqli->connect_errno) {
 }
 
 $u = $mysqli->query("SELECT * FROM users");
+
+$mysqli->close();
 ?>
