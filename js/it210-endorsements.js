@@ -35,20 +35,23 @@ function commitNewEndorsement() {
                               , "date":document.getElementById("timeField").value, "timestamp":Date.now()});
   localStorage.endorsements = JSON.stringify(endorsements);
 
-
-
-
   document.getElementById("AllEndor").innerHTML = "<h4>" + document.getElementById("nameField").value + " at <i>just now.</i></h4>"
                                                 + "<p>" + document.getElementById("commentField").value + "</p>"
                                                 + document.getElementById("AllEndor").innerHTML;
 
   localStorage.comment = "";
   localStorage.name = "";
+
+  document.getElementById("eForm").submit();
+  document.getElementById("eForm").reset();
+
   document.getElementById("commentField").value = "";
   document.getElementById("nameField").value = "";
   document.getElementById("timeField").value = getEzTime();
 
 }
+
+
 
 function sortByKey(key) {
   endorsements.sort(function(a,b){

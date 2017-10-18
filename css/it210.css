@@ -76,6 +76,10 @@ header {
 
 .content-image {
   width: 400px;
-  
+
   height: inherit;
+}
+
+.active {
+  background-color: white;
 }

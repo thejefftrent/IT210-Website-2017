@@ -1,9 +1,80 @@
+<?php
+
+
+use PHPMailer\PHPMailer\PHPMailer;
+
+include 'php/users_check.php';
+require 'php/phpmailer/src/PHPMailer.php';
+require 'php/phpmailer/src/Exception.php';
+require 'php/phpmailer/src/OAuth.php';
+require 'php/phpmailer/src/SMTP.php';
+require 'php/phpmailer/src/POP3.php';
+	$log = false;
+	$name = null;
+	$email = null;
+	$sent = false;
+session_start();
+if(isset($_SESSION['logged_in']) && isset($_SESSION['username']))
+{
+
+	while($row = $u->fetch_assoc()) {
+		if($_SESSION['username'] == $row['username'])
+		{
+			$name = $row['name'];
+			$email = $row['email'];
+			$log = $row['login'];
+		}
+	}
+	if($log)
+	{
+
+	} else {
+		header('Location: login.php');
+		exit;
+	}
+}
+else
+{
+	header('Location: login.php');
+	exit;
+}
+
+if(isset($_POST['emailbody']) && isset($_POST['subject']) && isset($_POST['subject']) && isset($_POST['subject']))
+{
+	$sendname = $_POST['contactname'];
+	$sendemail = $_POST['email'];
+	$body = $_POST['emailbody']. '<br><br>' . $sendname;
+
+	$mail = new PHPMailer;
+	$mail->isSMTP();
+	$mail->SMTPDebug = 0;
+	$mail->Host = 'smtp.gmail.com';
+	$mail->Port = 587;
+	$mail->SMTPSecure = 'tls';
+	$mail->SMTPAuth = true;
+	$mail->Username = "thisemailisforit210@gmail.com";
+	$mail->Password = "impossiblesafe";
+	$mail->setFrom($sendemail, $sendname); //use mysqli....
+	$mail->addReplyTo($sendemail, $sendname);
+	$mail->addAddress('thisemailisforit210@gmail.com', 'Web Admin');
+	$mail->Subject = $_POST['subject'];
+	$mail->isHTML(true);
+	$mail->Body = $body;
+	if (!$mail->send()) {
+    echo "Mailer Error: " . $mail->ErrorInfo;
+} else {
+	$sent = true;
+    //Section 2: IMAP
+    //Uncomment these to save your message in the 'Sent Mail' folder.
+    #if (save_mail($mail)) {
+    #    echo "Message saved!";
+    #}
+}
+}
+?>
+
 <!DOCTYPE HTML>
 
-<!--
-Created by:Tyler Bristow
-This is an outline of a basic HTML page. Feel free to make any changes you would like.
--->
 
 <html>
 	<head>
@@ -15,6 +86,7 @@ This is an outline of a basic HTML page. Feel free to make any changes you would
 
 		<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script src="js/bootstrap.js"></script>
+		<script src="js/it210-contact.js"></script>
 		<link rel="shortcut icon" href="img/icon.ico" type="image/x-icon">
 		<link rel="icon" href="img/icon.ico" type="image/x-icon">
 	</head>
@@ -28,40 +100,31 @@ This is an outline of a basic HTML page. Feel free to make any changes you would
 				<h2 class="text-center" id="subtitletext">This is a demonstration that I can do stuff with CSS</h2>
 			</header>
 			<div class="row">
-				<nav class="col-lg-4 navbar-right">
-					<ul class="list-unstyled nav nav-stacked nav-pills">
-						<li class="nav-item">
-							<a href="home.html" class="nav-link"><span class="glyphicon glyphicon-home"></span> Home</a>
-						</li>
-						<li class="nav-item">
-							<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="true"><span class="glyphicon glyphicon-ice-lolly-tasted"></span> My projects <span class="glyphicon glyphicon-menu-down"></span></a>
-							<ul class="dropdown-menu">
-								<li>
-									<a href="project.html?project=0" class="nav-link"><span class="glyphicon glyphicon-king"></span> Project 1</a>
-								</li>
-								<li>
-									<a href="project.html?project=1" class="nav-link"><span class="glyphicon glyphicon-queen"></span> Project 2</a>
-								</li>
-								<li>
-									<a href="project.html?project=2" class="nav-link"><span class="glyphicon glyphicon-pawn"></span> Project 3</a>
-								</li>
-							</ul>
-						</li>
-						<li class="nav-item">
-							<a href="endorsements.html" class="nav-link"><span class="glyphicon glyphicon-gift"></span> Endorsements from others</a>
-						</li>
-						<li class="nav-item">
-							<a href="contact.html" class="nav-link"><span class="glyphicon glyphicon-envelope"></span> Contact me</a>
-						</li>
-					</ul>
-				</nav>
+<?php include('php/nav.php'); ?>
+
 				<div class="col-lg-8 content-box">
-					<h3 class="content-heading">Lorem Ipsum</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris hendrerit neque sem, nec placerat lacus viverra sit amet. Maecenas dignissim iaculis quam nec fermentum. Nulla pharetra metus sed augue eleifend placerat. Nullam aliquet augue sit amet justo egestas, vel congue tortor condimentum. Nulla aliquet risus neque, ut scelerisque quam accumsan nec. Donec convallis, leo in volutpat facilisis, nisi sem blandit augue, id mattis augue erat vel mauris. Integer bibendum dictum ante, vel viverra ante dignissim eget. Phasellus vitae porttitor ex.</p>
-				</div>
-				<div class="col-lg-8 content-box">
-					<h3 class="content-heading">A picture</h3>
-					<img src="img/sheep.jpg" alt="sheep!" class="img-rounded content-image center-block">
+					<h3 class="content-heading">Contact me!</h3>
+					<p id="cerror"></p>
+					<?php if($sent){echo "<script type='text/javascript'>alert('Message sent!');</script>";}?>
+					<form id="cform" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+						<div class="form-group">
+							<label for="text">Name:</label>
+							<input type="text" class="form-control" id="contactname" name="contactname" value="<?php echo $name ; ?>">
+						</div>
+						<div class="form-group">
+							<label for="text">Email:</label>
+							<input type="text" class="form-control" id="email" name="email" value="<?php echo $email ; ?>">
+						</div>
+						<div class="form-group">
+              <label for="text">Subject:</label>
+              <input type="text" class="form-control" id="subject" name="subject" placeholder="Your website sucks!">
+            </div>
+						<div class="form-group">
+							<label for="textarea">Your Comment or Question:</label>
+							<textarea name="emailbody" class="form-control" id="emailbody" placeholder="Literally the worst." rows="5"></textarea>
+						</div>
+            <button type="button" class="btn btn-default" onclick="sendContact()">Submit</button>
+          </form>
 				</div>
 			</div>
 		<footer class="row">

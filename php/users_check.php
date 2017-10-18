@@ -8,4 +8,7 @@ if ($mysqli->connect_errno) {
 }
 
 $u = $mysqli->query("SELECT * FROM users");
+$c = $mysqli->query("SELECT users.name, comments.comments, comments.timestamp FROM comments INNER JOIN users ON users.userID=comments.userID");
+
+$mysqli->close();
 ?>
